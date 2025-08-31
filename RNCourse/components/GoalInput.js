@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Modal, StyleSheet, TextInput, View } from "react-native";
+import { Button, Image, Modal, StyleSheet, TextInput, View } from "react-native";
 
 export default function GoalInput(props) {
   const { onAddGoal, onCancel, visible } = props;
@@ -18,6 +18,7 @@ export default function GoalInput(props) {
   return (
     <Modal visible={visible} animationType="slide">
       <View style={styles.inputContainer}>
+        <Image style={styles.image} source={require('../assets/Images/Carlotta.webp')} />
         <TextInput
           style={styles.textInput}
           placeholder="Your course goal"
@@ -27,10 +28,10 @@ export default function GoalInput(props) {
 
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button title="Add Goal" onPress={addGoalHander} />
+            <Button color="#63a8f1ff" title="Add Goal" onPress={addGoalHander} />
           </View>
           <View style={styles.button}>
-            <Button title="Cancel" onPress={onCancel} />
+            <Button color="#ff65afff" title="Cancel" onPress={onCancel} />
           </View>
         </View>
       </View>
@@ -44,15 +45,13 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    borderBottomColor: "#cccccc",
-    borderBottomWidth: 1,
-    marginBottom: 24,
+    backgroundColor: "#faaac2ff",
   },
   textInput: {
-    borderWidth: 1,
-    borderColor: "#b6b6b6ff",
+    backgroundColor: "#fff",
     width: "80%",
-    padding: 8,
+    borderRadius: 8,
+    padding: 16,
   },
   buttonContainer: {
     flexDirection: "row",
@@ -61,5 +60,11 @@ const styles = StyleSheet.create({
   button: {
     width: 100,
     marginHorizontal: 6,
+  },
+  image: {
+    height: 250,
+    width: 250,
+    objectFit: "contain",
+    marginBottom: 16,
   }
 });

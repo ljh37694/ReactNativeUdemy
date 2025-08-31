@@ -18,16 +18,18 @@ export default function GoalItem(props) {
 
 const styles = StyleSheet.create({
   goalItem: {
-    backgroundColor: "#a25dbfff",
+    backgroundColor: "#6ecaffff",
     borderRadius: 10,
     marginBottom: 10,
+    overflow: "hidden",
   },
   goalText: {
     color: "#fff",
     padding: 15,
+    borderRadius: 10,
   },
   pressedItem: {
     opacity: 0.5,
-    backgroundColor: '#77438dff',
-  }
+    backgroundColor: "#5392ffff",
+  },
 });
