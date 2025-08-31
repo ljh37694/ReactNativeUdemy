@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Button, StyleSheet, TextInput, View } from "react-native";
+import { Button, Modal, StyleSheet, TextInput, View } from "react-native";
 
 export default function GoalInput(props) {
-  const { onAddGoal } = props;
+  const { onAddGoal, onCancel, visible } = props;
 
   const [enteredGoalText, setEnteredGoalText] = useState("");
 
@@ -13,27 +13,37 @@ export default function GoalInput(props) {
   const addGoalHander = () => {
     onAddGoal(enteredGoalText);
     setEnteredGoalText("");
-  }
+  };
 
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Your course goal"
-        onChangeText={goalInputHandler}
-        value={enteredGoalText}
-      />
-      <Button title="Add Goal" onPress={addGoalHander} />
-    </View>
+    <Modal visible={visible} animationType="slide">
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Your course goal"
+          onChangeText={goalInputHandler}
+          value={enteredGoalText}
+        />
+
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button title="Add Goal" onPress={addGoalHander} />
+          </View>
+          <View style={styles.button}>
+            <Button title="Cancel" onPress={onCancel} />
+          </View>
+        </View>
+      </View>
+    </Modal>
   );
 }
 
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
     borderBottomColor: "#cccccc",
     borderBottomWidth: 1,
     marginBottom: 24,
@@ -42,7 +52,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#b6b6b6ff",
     width: "80%",
-    padding: 3,
-    marginRight: 5,
+    padding: 8,
   },
+  buttonContainer: {
+    flexDirection: "row",
+    marginTop: 10,
+  },
+  button: {
+    width: 100,
+    marginHorizontal: 6,
+  }
 });
