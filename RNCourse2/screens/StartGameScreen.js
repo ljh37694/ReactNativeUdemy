@@ -10,7 +10,7 @@ export default function StartGameScreen() {
         keyboardType="number-pad"
         autoCapitalize="none"
       />
-      <View>
+      <View style={style.buttonContainer}>
         <PrimaryButton>Reset</PrimaryButton>
         <PrimaryButton>Confirm</PrimaryButton>
       </View>
@@ -30,6 +30,7 @@ const style = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 6,
     shadowOpacity: 0.25,
+    alignItems: "center",
   },
   numberInput: {
     height: 65,
@@ -41,5 +42,9 @@ const style = StyleSheet.create({
     marginVertical: 16,
     fontWeight: "bold",
     textAlign: "center",
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 });
