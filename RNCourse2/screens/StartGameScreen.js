@@ -46,5 +46,6 @@ const style = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
+    marginTop: 20,
   },
 });
